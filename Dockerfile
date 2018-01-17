@@ -5,5 +5,6 @@ RUN apk --update add mongodb mongodb-tools
 
 RUN mkdir -p /data/db
 
+VOLUME /data/db
 EXPOSE 27017
 CMD ["mongod"]
