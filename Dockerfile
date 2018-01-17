@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:3.7
 
 RUN \
 apk add --no-cache mongodb && \
@@ -8,5 +8,6 @@ VOLUME /data/db
 EXPOSE 27017 28017
 
 COPY run.sh /root
+CMD [ "chmod", "777", "/root/run.sh" ]
 ENTRYPOINT [ "/root/run.sh" ]
 CMD [ "mongod", "--bind_ip", "0.0.0.0" ]
