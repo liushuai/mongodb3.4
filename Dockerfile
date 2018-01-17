@@ -1,9 +1,9 @@
-FROM alpine:latest
+FROM alpine:3.6
 
-RUN \
-apk add --no-cache mongodb && \
-rm /usr/bin/mongoperf
+# Install mongodb 3.4.4
+RUN apk --update add mongodb mongodb-tools
 
-VOLUME /data/db
-EXPOSE 27017 28017
-ENTRYPOINT ["/usr/bin/mongod"]
+RUN mkdir -p /data/db
+
+EXPOSE 27017
+CMD ["mongod"]
